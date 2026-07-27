@@ -6,7 +6,7 @@
 /* Desktop */
 :root {
   --size-unit: 16; /* body font-size in design — no px */
-  --size-container-ideal: 1440; /* Figma frame width — set during Phase 0 */
+  --size-container-ideal: 1280; /* Figma frame width (Home V.1) */
   --size-container-min: 992px;
   --size-container-max: 1440px;
   --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
@@ -49,19 +49,29 @@
    ========================================================================== */
 
 :root {
-  /* Colors */
-  --color-primary: #000000;
-  --color-accent: #000000;
+  /* Colors — extracted from Figma "Home V.1" */
+  --color-primary: #11190c;
+  --color-accent: #e6ff02;
   --color-bg-white: #ffffff;
-  --color-bg-dark: #000000;
-  --color-text-primary: #000000;
-  --color-text-secondary: #666666;
+  --color-bg-dark: #11190c;
+  --color-bg-muted: #9f998a;
+  --color-text-primary: #11190c;
+  --color-text-secondary: #a0a0a0;
   --color-text-white: #ffffff;
-  --color-border: #e0e0e0;
+  --color-border: #ededed;
 
-  /* Typography — update font imports in your root layout file */
-  --font-heading: system-ui, sans-serif;
-  --font-body: system-ui, sans-serif;
+  /* Neutrals */
+  --color-neutral-1: #4c4c4c;
+  --color-neutral-2: #cfc9bc;
+  --color-neutral-3: #a5a5a5;
+  --color-neutral-4: #eeeeee;
+  --color-neutral-5: #e4e4e4;
+  --color-neutral-6: #70756d;
+  --color-neutral-7: #0d0d0d;
+
+  /* Typography — Instrument Sans (headings) + Inter (body), both Google Fonts */
+  --font-heading: "Instrument Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
 
   /* Spacing scale */
   --spacing-xs: 0.25em;   /* 4px */
@@ -76,10 +86,16 @@
   --spacing-section: 6.25em; /* 100px */
 
   /* Border radius */
-  --radius-sm: 0.25em;    /* 4px */
-  --radius-md: 0.5em;     /* 8px */
-  --radius-lg: 1em;       /* 16px */
-  --radius-pill: 3em;     /* 48px */
+  --radius-sm: 1em;       /* 16px */
+  --radius-md: 1.5em;     /* 24px */
+  --radius-lg: 2em;       /* 32px */
+  --radius-xl: 3.5em;     /* 56px */
+  --radius-pill: 5.5em;   /* 88px */
+
+  /* Shadows */
+  --shadow-card: 111px 124px 46px rgba(31, 31, 31, 0), 71px 79px 42px rgba(31, 31, 31, 0.01),
+    40px 45px 36px rgba(31, 31, 31, 0.05), 18px 20px 27px rgba(31, 31, 31, 0.09),
+    4px 5px 15px rgba(31, 31, 31, 0.1);
 
   /* Transitions */
   --transition-fast: 150ms ease;
