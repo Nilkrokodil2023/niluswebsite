@@ -1,0 +1,160 @@
+---
+import Button from "./Button.astro";
+---
+
+<section class="cta-mockup">
+	<div class="cta-mockup__inner container">
+		<div class="cta-mockup__card">
+			<div class="cta-mockup__squares" aria-hidden="true">
+				<div class="cta-mockup__row cta-mockup__row--a">
+					<span class="cta-mockup__square"></span>
+					<span class="cta-mockup__square"></span>
+					<span class="cta-mockup__square"></span>
+					<span class="cta-mockup__square"></span>
+				</div>
+				<div class="cta-mockup__row cta-mockup__row--b">
+					<span class="cta-mockup__square"></span>
+					<span class="cta-mockup__square"></span>
+					<span class="cta-mockup__square"></span>
+					<span class="cta-mockup__square"></span>
+				</div>
+			</div>
+
+			<div class="cta-mockup__text">
+				<h2 class="cta-mockup__headline">
+					Bereit deine Neukundengewinnung zu <span class="cta-mockup__accent">maximieren?</span>
+				</h2>
+				<p class="cta-mockup__description">
+					Lass uns in einem unverbindlichen Termin herausfinden ob und wie ich dir helfen kann.
+				</p>
+				<Button label="Gespräch vereinbaren" />
+			</div>
+
+			<div class="cta-mockup__photo">
+				<img src="/assets/images/gluck-kann-man-nicht-kaufen-ein-bike-schon2.png" alt="Screenshot: 24 qualifizierte Anfragen diesen Monat" width="874" height="1092" />
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.cta-mockup {
+		width: 100%;
+		background-color: white;
+		padding-bottom: 3.25em;
+	}
+
+	.cta-mockup__card {
+		position: relative;
+		background-color: var(--color-neutral-2);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		padding: 3.75em;
+		min-height: 40.4375em;
+	}
+
+	.cta-mockup__squares {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+	}
+
+	.cta-mockup__row {
+		position: absolute;
+		left: -2em;
+		display: flex;
+		gap: 10.07em;
+	}
+
+	.cta-mockup__row--a {
+		top: 25.84em;
+	}
+
+	.cta-mockup__row--b {
+		top: 35.9em;
+		left: -2em;
+		margin-left: 10.07em;
+	}
+
+	.cta-mockup__square {
+		flex-shrink: 0;
+		width: 10.07em;
+		height: 10.07em;
+		border-radius: var(--radius-md);
+		background-color: var(--color-accent);
+	}
+
+	.cta-mockup__text {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.25em;
+		max-width: 44em;
+	}
+
+	.cta-mockup__headline {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 3.75em;
+		line-height: 1.2;
+		letter-spacing: -1.5px;
+		color: var(--color-primary);
+	}
+
+	.cta-mockup__accent {
+		color: var(--color-accent);
+	}
+
+	.cta-mockup__description {
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 1em;
+		line-height: 1.5;
+		letter-spacing: -0.128px;
+		color: var(--color-neutral-1);
+		max-width: 34em;
+	}
+
+	.cta-mockup__photo {
+		position: absolute;
+		z-index: 1;
+		right: 3.75em;
+		bottom: -3.75em;
+		width: 27.3125em;
+		height: 34.125em;
+	}
+
+	.cta-mockup__photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: bottom;
+		display: block;
+	}
+
+	@media (max-width: 991px) {
+		.cta-mockup__photo {
+			display: none;
+		}
+
+		.cta-mockup__headline {
+			font-size: 3em;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.cta-mockup__card {
+			padding: 2em;
+		}
+
+		.cta-mockup__headline {
+			font-size: 2.25em;
+		}
+
+		.cta-mockup__squares {
+			display: none;
+		}
+	}
+</style>

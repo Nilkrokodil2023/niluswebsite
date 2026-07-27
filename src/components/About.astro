@@ -1,0 +1,134 @@
+---
+import Button from "./Button.astro";
+---
+
+<section class="about">
+	<div class="about__inner container">
+		<h2 class="about__headline">Über <span class="about__accent">mich</span></h2>
+
+		<div class="about__content">
+			<div class="about__card">
+				<img src="/assets/images/member-image.png" alt="Nilufar Layer" width="260" height="291" />
+				<div class="about__card-overlay">
+					<p class="about__card-name">Nilufar Layer</p>
+				</div>
+			</div>
+
+			<p class="about__description">
+				Über 16 Jahre Erfahrung im Online-Marketing, in der Erstellung von Landingpages und Werbeanzeigen, 100+ gebaute Websites &amp; Landingpages, mehrere Millionen € Umsatz für Kunden durch Verkaufspsychologie &amp; Ads …
+				<br /><br />
+				Klingt alles gut, aber viel wichtiger für dich ist: Du hast erkannt, dass durchschnittliches Marketing – von irgendeinem Freelancer, von dir selbst oder einer Fließband-Agentur – keine Option ist.
+			</p>
+		</div>
+
+		<Button label="ich will mehr erfahren" />
+	</div>
+</section>
+
+<style>
+	.about {
+		width: 100%;
+		background-color: var(--color-neutral-2);
+		padding-block: 5em;
+	}
+
+	.about__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 3.3125em;
+	}
+
+	.about__headline {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 4.5em;
+		line-height: 1.111;
+		letter-spacing: -1.8px;
+		color: var(--color-primary);
+		text-align: center;
+		width: 100%;
+	}
+
+	.about__accent {
+		color: var(--color-accent);
+	}
+
+	.about__content {
+		display: flex;
+		align-items: center;
+		gap: 1.5em;
+		width: 100%;
+	}
+
+	.about__card {
+		flex-shrink: 0;
+		position: relative;
+		width: 16.25em;
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+	}
+
+	.about__card img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+	}
+
+	.about__card-overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding-block: 1em;
+		display: flex;
+		justify-content: center;
+		background: linear-gradient(to bottom, rgba(17, 25, 12, 0), var(--color-primary) 61.5%);
+	}
+
+	.about__card-name {
+		font-family: var(--font-heading);
+		font-weight: 500;
+		font-size: 1em;
+		line-height: 1.5;
+		letter-spacing: -0.4px;
+		color: var(--color-text-white);
+	}
+
+	.about__description {
+		flex: 1 0 0;
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 1.25em;
+		line-height: 1.4;
+		letter-spacing: -0.16px;
+		color: var(--color-neutral-7);
+	}
+
+	@media (max-width: 991px) {
+		.about__headline {
+			font-size: 3.5em;
+		}
+
+		.about__content {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.about__card {
+			width: 100%;
+			max-width: 16.25em;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.about {
+			padding-block: 3em;
+		}
+
+		.about__headline {
+			font-size: 2.5em;
+		}
+	}
+</style>

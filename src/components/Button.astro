@@ -1,0 +1,43 @@
+---
+interface Props {
+	label: string;
+	href?: string;
+	size?: "sm" | "md";
+}
+
+const { label, href = "#", size = "md" } = Astro.props;
+---
+
+<a href={href} class={`btn-pill btn-pill--${size}`}>
+	{label}
+</a>
+
+<style>
+	.btn-pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: fit-content;
+		background-color: var(--color-primary);
+		color: var(--color-accent);
+		font-family: var(--font-body);
+		font-weight: 500;
+		font-size: 1em;
+		line-height: 1.5;
+		border-radius: var(--radius-xl);
+		white-space: nowrap;
+		text-decoration: none;
+	}
+
+	.btn-pill--md {
+		padding: 1.25em 2em;
+	}
+
+	.btn-pill--sm {
+		padding: 0.75em 1.5em;
+	}
+
+	.btn-pill:hover {
+		opacity: 0.85;
+	}
+</style>

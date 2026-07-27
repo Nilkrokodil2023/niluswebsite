@@ -1,0 +1,140 @@
+---
+import Button from "./Button.astro";
+
+const links = ["Methode", "Referenzen", "Über mich", "FAQ"];
+---
+
+<header class="navbar">
+	<div class="navbar__inner container">
+		<nav class="navbar__nav">
+			<a href="/" class="navbar__logo" aria-label="Nilufar Layer, Home">
+				<span class="navbar__logo-icon" aria-hidden="true">
+					<img src="/assets/images/vector.svg" alt="" width="16" height="16" />
+					<img src="/assets/images/vector1.svg" alt="" width="16" height="16" />
+					<img src="/assets/images/vector2.svg" alt="" width="16" height="16" />
+				</span>
+				<span class="navbar__logo-text">Nilufar Layer</span>
+			</a>
+
+			<input type="checkbox" id="nav-toggle" class="navbar__toggle-input" />
+
+			<div class="navbar__links">
+				{links.map((link) => <a href="#" class="navbar__link">{link}</a>)}
+				<Button label="Zusammenarbeit anfragen" size="sm" />
+			</div>
+
+			<label for="nav-toggle" class="navbar__burger" aria-label="Menü öffnen">
+				<span></span>
+				<span></span>
+				<span></span>
+			</label>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.navbar {
+		width: 100%;
+		background-color: var(--color-neutral-2);
+		padding-block: 1.5em;
+	}
+
+	.navbar__nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		border-radius: var(--radius-pill);
+		position: relative;
+	}
+
+	.navbar__logo {
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+		text-decoration: none;
+	}
+
+	.navbar__logo-icon {
+		display: inline-flex;
+		gap: 0.1em;
+	}
+
+	.navbar__logo-icon img {
+		width: 1em;
+		height: 1em;
+	}
+
+	.navbar__logo-text {
+		font-family: var(--font-body);
+		font-weight: 500;
+		font-size: 1.25em;
+		color: var(--color-primary);
+		line-height: 1.2;
+	}
+
+	.navbar__links {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+	}
+
+	.navbar__link {
+		padding: 0.75em;
+		font-family: var(--font-body);
+		font-weight: 500;
+		font-size: 1em;
+		line-height: 1.5;
+		color: var(--color-primary);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+
+	.navbar__link:hover {
+		opacity: 0.7;
+	}
+
+	.navbar__toggle-input {
+		display: none;
+	}
+
+	.navbar__burger {
+		display: none;
+		flex-direction: column;
+		gap: 5px;
+		cursor: pointer;
+		padding: 0.5em;
+	}
+
+	.navbar__burger span {
+		display: block;
+		width: 22px;
+		height: 2px;
+		background-color: var(--color-primary);
+	}
+
+	@media (max-width: 991px) {
+		.navbar__burger {
+			display: flex;
+		}
+
+		.navbar__links {
+			display: none;
+			position: absolute;
+			top: calc(100% + 0.5em);
+			right: 0;
+			left: 0;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.5em;
+			background-color: var(--color-neutral-2);
+			border-radius: var(--radius-md);
+			padding: 1em;
+			z-index: 20;
+		}
+
+		.navbar__toggle-input:checked ~ .navbar__links {
+			display: flex;
+		}
+	}
+</style>

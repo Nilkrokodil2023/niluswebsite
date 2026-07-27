@@ -1,0 +1,184 @@
+---
+---
+
+<section class="testimonials">
+	<div class="testimonials__inner container">
+		<h2 class="testimonials__headline">Was meine Kunden <span class="testimonials__accent">sagen</span></h2>
+
+		<div class="testimonials__content">
+			<div class="testimonials__image">
+				<img src="/assets/images/bildschirmfoto20260723-um1445081.png" alt="Referenzprojekt Screenshot" width="600" height="609" />
+			</div>
+
+			<div class="testimonials__text">
+				<svg class="testimonials__quote-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+					<path d="M26 16C18.268 16 12 22.268 12 30v18h18V30h-9c0-5.523 4.477-10 10-10v-4zm26 0c-7.732 0-14 6.268-14 14v18h18V30h-9c0-5.523 4.477-10 10-10v-4z" fill="currentColor"/>
+				</svg>
+
+				<div class="testimonials__quote">
+					<p><strong>Problem:</strong></p>
+					<p>Es gab bereits viele Anfragen für den Service der individuellen Produktion von Verpackungen. Die Anzahl sollte erhöht und gleichzeitig die Leadqualität erhalten werden.</p>
+					<p><strong>Lösung:</strong></p>
+					<p>Intensive Zielgruppenrecherche und Erstellung einer verkaufsstarken Landingpage mit diesen Insights. Erstellung von Werbekampagnen auf Google und Meta zur Neukundengewinnung.</p>
+					<p><strong>Ergebnis:</strong></p>
+					<p>Die neue Landingpage wurde A/B-getestet und erbrachte eine 23% Verbesserung der Conversionrate bei außerordentlich guter Leadqualität.</p>
+				</div>
+
+				<div class="testimonials__author">
+					<p class="testimonials__author-name">Holger Kehr</p>
+					<p class="testimonials__author-title">Geschäftsführer der Verpackungswelt GmbH</p>
+				</div>
+
+				<div class="testimonials__rating">
+					<span class="testimonials__rating-bar"></span>
+					<span class="testimonials__rating-dot"></span>
+					<span class="testimonials__rating-dot"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.testimonials {
+		width: 100%;
+		background-color: var(--color-primary);
+		padding-block: 6.25em;
+	}
+
+	.testimonials__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4.5em;
+	}
+
+	.testimonials__headline {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 3.75em;
+		line-height: 1.2;
+		letter-spacing: -1.5px;
+		color: var(--color-text-white);
+		text-align: center;
+	}
+
+	.testimonials__accent {
+		color: var(--color-accent);
+	}
+
+	.testimonials__content {
+		display: flex;
+		align-items: center;
+		gap: 3.6875em;
+		width: 100%;
+		max-width: 61em;
+	}
+
+	.testimonials__image {
+		flex-shrink: 0;
+		width: 29.75em;
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+	}
+
+	.testimonials__image img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+	}
+
+	.testimonials__text {
+		flex: 1 0 0;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2.5em;
+	}
+
+	.testimonials__quote-icon {
+		width: 4em;
+		height: 4em;
+		color: var(--color-accent);
+	}
+
+	.testimonials__quote {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 1.5em;
+		line-height: 1.333;
+		letter-spacing: -0.6px;
+		color: var(--color-text-white);
+	}
+
+	.testimonials__author-name {
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 1.25em;
+		line-height: 1.4;
+		letter-spacing: -0.16px;
+		color: var(--color-text-white);
+	}
+
+	.testimonials__author-title {
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 0.875em;
+		line-height: 1.429;
+		letter-spacing: -0.112px;
+		color: var(--color-neutral-3);
+	}
+
+	.testimonials__rating {
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+	}
+
+	.testimonials__rating-bar {
+		width: 2.5em;
+		height: 0.5em;
+		border-radius: 1em;
+		background-color: var(--color-accent);
+	}
+
+	.testimonials__rating-dot {
+		width: 0.5em;
+		height: 0.5em;
+		border-radius: 1em;
+		background-color: var(--color-neutral-6);
+	}
+
+	@media (max-width: 991px) {
+		.testimonials__headline {
+			font-size: 3em;
+		}
+
+		.testimonials__content {
+			flex-direction: column;
+		}
+
+		.testimonials__image {
+			width: 100%;
+			max-width: 25em;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.testimonials {
+			padding-block: 3em;
+		}
+
+		.testimonials__headline {
+			font-size: 2.25em;
+		}
+
+		.testimonials__quote {
+			font-size: 1.25em;
+		}
+	}
+</style>

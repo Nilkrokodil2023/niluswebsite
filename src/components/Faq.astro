@@ -1,0 +1,189 @@
+---
+import Button from "./Button.astro";
+
+const items = [
+	{
+		q: "Für welche Branchen eignet sich das?",
+		a: "Du benötigst ein hochpreisiges Angebot mit einem Auftragswert von mehr als 3.000 € damit sich das Invest lohnt. Wichtig ist, dass sich dein Angebot bereits organisch gut verkauft damit wie mit Werbeanzeigen skalieren können.",
+		open: true,
+	},
+	{
+		q: "Wie lange dauert es bis ich Ergebnisse sehe?",
+		a: "Nach dem Start der Kampagne . dauert es nur wenige Tage bis wir erste Anfragen erhalten. Das ist das Schöne an Werbeanzeigen, es geht wirklich schnell.",
+		open: true,
+	},
+	{
+		q: "Woher weiß ich das das wirklich funktioniert?",
+		a: "Ich baue auf +16 Jahre Erfahrung. Ich habe einige Referenzkunden mit denen du vor Start sprechen kannst um dich zu vergewissern, dass ich die richtige Wahl bin.",
+		open: false,
+	},
+];
+---
+
+<section class="faq">
+	<div class="faq__inner container">
+		<div class="faq__intro">
+			<h2 class="faq__headline">FAQ</h2>
+			<Button label="Beratung anfordern" />
+		</div>
+
+		<div class="faq__list">
+			{items.map((item, i) => (
+				<>
+					<details class="faq__item" open={item.open}>
+						<summary class="faq__question">
+							<span>{item.q}</span>
+							<span class="faq__icon" aria-hidden="true"></span>
+						</summary>
+						<p class="faq__answer">{item.a}</p>
+					</details>
+					{i < items.length - 1 && <div class="faq__divider"></div>}
+				</>
+			))}
+			<div class="faq__divider"></div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.faq {
+		width: 100%;
+		background-color: white;
+		padding-block: 5em;
+	}
+
+	.faq__inner {
+		display: flex;
+		gap: 2.5em;
+		align-items: flex-start;
+	}
+
+	.faq__intro {
+		flex-shrink: 0;
+		width: 31.25em;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 4em;
+		position: sticky;
+		top: 2em;
+	}
+
+	.faq__headline {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 3.75em;
+		line-height: 1.2;
+		letter-spacing: -1.5px;
+		color: var(--color-primary);
+	}
+
+	.faq__list {
+		flex: 1 0 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25em;
+		max-width: 36em;
+	}
+
+	.faq__item {
+		width: 100%;
+	}
+
+	.faq__question {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1em;
+		cursor: pointer;
+		list-style: none;
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 1.5em;
+		line-height: 1.333;
+		letter-spacing: -0.6px;
+		color: var(--color-primary);
+	}
+
+	.faq__question::-webkit-details-marker {
+		display: none;
+	}
+
+	.faq__icon {
+		flex-shrink: 0;
+		width: 2.75em;
+		height: 2.75em;
+		border-radius: var(--radius-xl);
+		background-color: var(--color-primary);
+		position: relative;
+	}
+
+	.faq__icon::before,
+	.faq__icon::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		background-color: var(--color-accent);
+		transform: translate(-50%, -50%);
+	}
+
+	.faq__icon::before {
+		width: 0.625em;
+		height: 2px;
+	}
+
+	.faq__icon::after {
+		width: 2px;
+		height: 0.625em;
+	}
+
+	.faq__item[open] .faq__icon::after {
+		display: none;
+	}
+
+	.faq__answer {
+		margin-top: 1.25em;
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 1em;
+		line-height: 1.5;
+		letter-spacing: -0.128px;
+		color: var(--color-neutral-1);
+	}
+
+	.faq__divider {
+		width: 100%;
+		height: 1px;
+		background-color: var(--color-primary);
+	}
+
+	@media (max-width: 991px) {
+		.faq__inner {
+			flex-direction: column;
+		}
+
+		.faq__intro {
+			width: 100%;
+			position: static;
+		}
+
+		.faq__list {
+			max-width: 100%;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.faq {
+			padding-block: 3em;
+		}
+
+		.faq__headline {
+			font-size: 3em;
+		}
+
+		.faq__question {
+			font-size: 1.25em;
+		}
+	}
+</style>

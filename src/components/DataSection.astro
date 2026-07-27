@@ -1,0 +1,140 @@
+---
+const stats = [
+	{ value: "16", suffix: "+", label: "Erfahrung" },
+	{ value: "€ 13 Mio", suffix: "+", label: "verwaltetes Werbe-Budget" },
+	{ value: "4.9", suffix: "/5.0", label: "Kundenbewertungen" },
+];
+---
+
+<section class="data-section">
+	<div class="data-section__inner container">
+		<h2 class="data-section__headline">
+			Wähle den <span class="data-section__accent">effizientesten</span> Weg zu wachsen
+		</h2>
+
+		<p class="data-section__description">
+			Du verlässt dich auf Weiterempfehlungen – aber das ist kein Business, sondern Zufallsmarketing.
+		</p>
+		<p class="data-section__description">
+			Deine Wettbewerber graben dir deine Kunden ab, weil sie es verstanden haben: Nur der sichtbarste Anbieter gewinnt, nicht der Beste.
+		</p>
+
+		<div class="data-section__stats">
+			{stats.map((stat) => (
+				<div class="data-section__stat">
+					<p class="data-section__stat-value">{stat.value}<span class="data-section__stat-suffix">{stat.suffix}</span></p>
+					<p class="data-section__stat-label">{stat.label}</p>
+				</div>
+			))}
+		</div>
+
+		<p class="data-section__hashtag">#neukundengewinnenleichtgemacht</p>
+	</div>
+</section>
+
+<style>
+	.data-section {
+		width: 100%;
+		background-color: var(--color-primary);
+		padding-block: 5em;
+	}
+
+	.data-section__inner {
+		display: flex;
+		flex-direction: column;
+		gap: 3.8125em;
+	}
+
+	.data-section__headline {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 3.75em;
+		line-height: 1.2;
+		letter-spacing: -1.5px;
+		color: var(--color-text-white);
+		max-width: 10.6em;
+	}
+
+	.data-section__accent {
+		color: var(--color-accent);
+	}
+
+	.data-section__description {
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 1.25em;
+		line-height: 1.4;
+		letter-spacing: -0.16px;
+		color: var(--color-text-white);
+		max-width: 34em;
+	}
+
+	.data-section__stats {
+		display: flex;
+		align-items: flex-start;
+		gap: 2em;
+		flex-wrap: wrap;
+	}
+
+	.data-section__stat {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25em;
+		flex: 1 0 0;
+		min-width: 9em;
+	}
+
+	.data-section__stat-value {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-style: italic;
+		font-size: 2.25em;
+		line-height: 1.111;
+		letter-spacing: -1.2px;
+		color: var(--color-text-white);
+	}
+
+	.data-section__stat-suffix {
+		font-size: 0.667em;
+	}
+
+	.data-section__stat-label {
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 0.875em;
+		line-height: 1.429;
+		letter-spacing: -0.112px;
+		color: var(--color-neutral-3);
+	}
+
+	.data-section__hashtag {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-style: italic;
+		font-size: 1.25em;
+		line-height: 1.4;
+		letter-spacing: -0.5px;
+		color: var(--color-accent);
+	}
+
+	@media (max-width: 991px) {
+		.data-section__headline {
+			font-size: 3em;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.data-section {
+			padding-block: 3em;
+		}
+
+		.data-section__headline {
+			font-size: 2.25em;
+		}
+
+		.data-section__stats {
+			flex-direction: column;
+			gap: 1.5em;
+		}
+	}
+</style>
