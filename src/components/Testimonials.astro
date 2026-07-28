@@ -16,12 +16,18 @@
 				</svg>
 
 				<div class="testimonials__quote">
-					<p><strong>Problem:</strong></p>
-					<p>Es gab bereits viele Anfragen für den Service der individuellen Produktion von Verpackungen. Die Anzahl sollte erhöht und gleichzeitig die Leadqualität erhalten werden.</p>
-					<p><strong>Lösung:</strong></p>
-					<p>Intensive Zielgruppenrecherche und Erstellung einer verkaufsstarken Landingpage mit diesen Insights. Erstellung von Werbekampagnen auf Google und Meta zur Neukundengewinnung.</p>
-					<p><strong>Ergebnis:</strong></p>
-					<p>Die neue Landingpage wurde A/B-getestet und erbrachte eine 23% Verbesserung der Conversionrate bei außerordentlich guter Leadqualität.</p>
+					<div class="testimonials__quote-block">
+						<p class="testimonials__quote-label">Problem:</p>
+						<p class="testimonials__quote-body">Es gab bereits viele Anfragen für den Service der individuellen Produktion von Verpackungen. Die Anzahl sollte erhöht und gleichzeitig die Leadqualität erhalten werden.</p>
+					</div>
+					<div class="testimonials__quote-block">
+						<p class="testimonials__quote-label">Lösung:</p>
+						<p class="testimonials__quote-body">Intensive Zielgruppenrecherche und Erstellung einer verkaufsstarken Landingpage mit diesen Insights. Erstellung von Werbekampagnen auf Google und Meta zur Neukundengewinnung.</p>
+					</div>
+					<div class="testimonials__quote-block">
+						<p class="testimonials__quote-label">Ergebnis:</p>
+						<p class="testimonials__quote-body">Die neue Landingpage wurde A/B-getestet und erbrachte eine 23% Verbesserung der Conversionrate bei außerordentlich guter Leadqualität.</p>
+					</div>
 				</div>
 
 				<div class="testimonials__author">
@@ -106,12 +112,30 @@
 	.testimonials__quote {
 		display: flex;
 		flex-direction: column;
-		gap: 0;
+		gap: 1.25em;
+	}
+
+	.testimonials__quote-block {
+		display: flex;
+		flex-direction: column;
+		gap: 0.375em;
+	}
+
+	.testimonials__quote-label {
 		font-family: var(--font-heading);
 		font-weight: 600;
-		font-size: 1.5em;
-		line-height: 1.333;
-		letter-spacing: -0.6px;
+		font-size: 1.25em;
+		line-height: 1.4;
+		letter-spacing: -0.5px;
+		color: var(--color-accent);
+	}
+
+	.testimonials__quote-body {
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 1.125em;
+		line-height: 1.55;
+		letter-spacing: -0.16px;
 		color: var(--color-text-white);
 	}
 
@@ -177,8 +201,8 @@
 			font-size: 2.25em;
 		}
 
-		.testimonials__quote {
-			font-size: 1.25em;
+		.testimonials__quote-body {
+			font-size: 1em;
 		}
 	}
 </style>
