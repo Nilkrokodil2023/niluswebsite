@@ -51,10 +51,6 @@ const months = ["JANUAR", "FEBRUAR", "MÄRZ", "APRIL", "MAI"];
 					<div class="method__card method__card--back">
 						<p class="method__card-title">Dein Fundament</p>
 						<div class="method__card-image">
-							<span class="method__card-image-dot method__card-image-dot--tl" aria-hidden="true"></span>
-							<span class="method__card-image-dot method__card-image-dot--tr" aria-hidden="true"></span>
-							<span class="method__card-image-dot method__card-image-dot--bl" aria-hidden="true"></span>
-							<span class="method__card-image-dot method__card-image-dot--br" aria-hidden="true"></span>
 							<img src="/assets/images/icon-landingpage-dunkel1.png" alt="" width="208" height="208" />
 						</div>
 					</div>
@@ -264,49 +260,14 @@ const months = ["JANUAR", "FEBRUAR", "MÄRZ", "APRIL", "MAI"];
 	}
 
 	.method__card-image {
-		position: relative;
 		width: 13em;
-		height: 13em;
 		margin-inline: auto;
-		background-color: var(--color-primary);
-		border-radius: var(--radius-md);
-		display: flex;
-		align-items: center;
-		justify-content: center;
 	}
 
 	.method__card-image img {
-		width: 60%;
-		height: 60%;
-		object-fit: contain;
-	}
-
-	.method__card-image-dot {
-		position: absolute;
-		width: 0.5em;
-		height: 0.5em;
-		border-radius: 50%;
-		background-color: var(--color-accent);
-	}
-
-	.method__card-image-dot--tl {
-		top: 0.75em;
-		left: 0.75em;
-	}
-
-	.method__card-image-dot--tr {
-		top: 0.75em;
-		right: 0.75em;
-	}
-
-	.method__card-image-dot--bl {
-		bottom: 0.75em;
-		left: 0.75em;
-	}
-
-	.method__card-image-dot--br {
-		bottom: 0.75em;
-		right: 0.75em;
+		width: 100%;
+		height: auto;
+		display: block;
 	}
 
 	.method__chart {
