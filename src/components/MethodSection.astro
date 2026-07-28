@@ -19,7 +19,21 @@ const months = ["JANUAR", "FEBRUAR", "MÄRZ", "APRIL", "MAI"];
 				<div class="method__visual">
 					<div class="method__card method__card--single">
 						<p class="method__card-title">Deine Zielgruppe</p>
-						<div class="method__card-placeholder"></div>
+						<div class="method__card-placeholder">
+							<div class="method__icon-row">
+								<span class="method__icon-btn" aria-hidden="true">
+									<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor"/></svg>
+								</span>
+								<span class="method__icon-btn" aria-hidden="true">
+									<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor"/></svg>
+								</span>
+							</div>
+							<div class="method__icon-row">
+								<span class="method__icon-btn" aria-hidden="true">
+									<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 12a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm7 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2 20c0-3 3-5.5 7-5.5s7 2.5 7 5.5v1H2v-1zm14-4.2c2.9.3 5 2.3 5 4.7v.5h-4v-.5c0-1.6-.4-3-1-4.2z" fill="currentColor"/></svg>
+								</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -37,6 +51,10 @@ const months = ["JANUAR", "FEBRUAR", "MÄRZ", "APRIL", "MAI"];
 					<div class="method__card method__card--back">
 						<p class="method__card-title">Dein Fundament</p>
 						<div class="method__card-image">
+							<span class="method__card-image-dot method__card-image-dot--tl" aria-hidden="true"></span>
+							<span class="method__card-image-dot method__card-image-dot--tr" aria-hidden="true"></span>
+							<span class="method__card-image-dot method__card-image-dot--bl" aria-hidden="true"></span>
+							<span class="method__card-image-dot method__card-image-dot--br" aria-hidden="true"></span>
 							<img src="/assets/images/icon-landingpage-dunkel1.png" alt="" width="208" height="208" />
 						</div>
 					</div>
@@ -217,23 +235,79 @@ const months = ["JANUAR", "FEBRUAR", "MÄRZ", "APRIL", "MAI"];
 		height: 18em;
 		background-color: var(--color-primary);
 		border-radius: var(--radius-md);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1em;
+	}
+
+	.method__icon-row {
+		display: flex;
+		gap: 1em;
+	}
+
+	.method__icon-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.5em;
+		height: 3.5em;
+		background-color: var(--color-accent);
+		border-radius: var(--radius-md);
+		color: var(--color-primary);
+	}
+
+	.method__icon-btn svg {
+		width: 1.5em;
+		height: 1.5em;
 	}
 
 	.method__card-image {
-		width: 100%;
-		height: 15.4375em;
+		position: relative;
+		width: 13em;
+		height: 13em;
+		margin-inline: auto;
 		background-color: var(--color-primary);
 		border-radius: var(--radius-md);
 		display: flex;
-		align-items: flex-end;
+		align-items: center;
 		justify-content: center;
-		padding: 1em;
 	}
 
 	.method__card-image img {
-		width: 13em;
-		height: 13em;
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
+		border-radius: var(--radius-md);
+	}
+
+	.method__card-image-dot {
+		position: absolute;
+		width: 0.5em;
+		height: 0.5em;
+		border-radius: 50%;
+		background-color: var(--color-accent);
+	}
+
+	.method__card-image-dot--tl {
+		top: 0.75em;
+		left: 0.75em;
+	}
+
+	.method__card-image-dot--tr {
+		top: 0.75em;
+		right: 0.75em;
+	}
+
+	.method__card-image-dot--bl {
+		bottom: 0.75em;
+		left: 0.75em;
+	}
+
+	.method__card-image-dot--br {
+		bottom: 0.75em;
+		right: 0.75em;
 	}
 
 	.method__chart {
