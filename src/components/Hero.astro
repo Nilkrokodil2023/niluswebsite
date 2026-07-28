@@ -3,7 +3,19 @@ import Button from "./Button.astro";
 ---
 
 <section class="hero">
-	<div class="hero__pattern" aria-hidden="true"></div>
+	<div class="hero__pattern" aria-hidden="true">
+		<span class="hero__pattern-tile" style="left: 0em; top: 0em;"></span>
+		<span class="hero__pattern-tile" style="left: 22.857em; top: 0em;"></span>
+		<span class="hero__pattern-tile" style="left: 45.714em; top: 0em;"></span>
+		<span class="hero__pattern-tile" style="left: 68.571em; top: 0em;"></span>
+		<span class="hero__pattern-tile" style="left: 11.429em; top: 11.429em;"></span>
+		<span class="hero__pattern-tile" style="left: 34.286em; top: 11.429em;"></span>
+		<span class="hero__pattern-tile" style="left: 57.143em; top: 11.429em;"></span>
+		<span class="hero__pattern-tile" style="left: 0em; top: 22.858em;"></span>
+		<span class="hero__pattern-tile" style="left: 22.857em; top: 22.858em;"></span>
+		<span class="hero__pattern-tile" style="left: 45.714em; top: 22.858em;"></span>
+		<span class="hero__pattern-tile" style="left: 68.571em; top: 22.858em;"></span>
+	</div>
 	<div class="hero__inner container">
 		<div class="hero__content">
 			<div class="hero__text">
@@ -61,18 +73,19 @@ import Button from "./Button.astro";
 
 	.hero__pattern {
 		position: absolute;
-		left: 0;
-		right: 0;
-		top: 39.29em;
-		height: 34.29em;
+		left: 50%;
+		top: 39.294em;
+		width: 80em;
+		height: 34.286em;
+		transform: translateX(-50%);
 		z-index: 0;
-		background-image:
-			linear-gradient(45deg, var(--color-bg-muted) 25%, transparent 25%),
-			linear-gradient(-45deg, var(--color-bg-muted) 25%, transparent 25%),
-			linear-gradient(45deg, transparent 75%, var(--color-bg-muted) 75%),
-			linear-gradient(-45deg, transparent 75%, var(--color-bg-muted) 75%);
-		background-size: 22.857em 22.857em;
-		background-position: 0 0, 0 11.4285em, 11.4285em -11.4285em, -11.4285em 0;
+	}
+
+	.hero__pattern-tile {
+		position: absolute;
+		width: 11.429em;
+		height: 11.429em;
+		background-color: var(--color-bg-muted);
 	}
 
 	.hero__inner {
