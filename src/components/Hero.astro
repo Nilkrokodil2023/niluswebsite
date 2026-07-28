@@ -3,6 +3,7 @@ import Button from "./Button.astro";
 ---
 
 <section class="hero">
+	<div class="hero__pattern" aria-hidden="true"></div>
 	<div class="hero__inner container">
 		<div class="hero__content">
 			<div class="hero__text">
@@ -52,12 +53,31 @@ import Button from "./Button.astro";
 
 <style>
 	.hero {
+		position: relative;
 		width: 100%;
 		background-color: var(--color-neutral-2);
 		overflow: clip;
 	}
 
+	.hero__pattern {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 27em;
+		height: 34.29em;
+		z-index: 0;
+		background-image:
+			linear-gradient(45deg, var(--color-bg-muted) 25%, transparent 25%),
+			linear-gradient(-45deg, var(--color-bg-muted) 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, var(--color-bg-muted) 75%),
+			linear-gradient(-45deg, transparent 75%, var(--color-bg-muted) 75%);
+		background-size: 22.857em 22.857em;
+		background-position: 0 0, 0 11.4285em, 11.4285em -11.4285em, -11.4285em 0;
+	}
+
 	.hero__inner {
+		position: relative;
+		z-index: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
