@@ -39,6 +39,9 @@ import Button from "./Button.astro";
 					class="hero__card-photo"
 				/>
 			</div>
+			<div class="hero__polaroid">
+				<img src="/assets/images/image1.png" alt="Agentur-Score: Sehr gut 4,7, 8 Bewertungen, powered by Agenturmarkt.de" width="262" height="165" />
+			</div>
 			<div class="hero__note">
 				<p class="hero__note-title">Täglich qualifizierte Anfragen.</p>
 				<p class="hero__note-text">Mit einer Website und Werbeanzeigen, die 24/7 für dich arbeiten</p>
@@ -227,6 +230,25 @@ import Button from "./Button.astro";
 		max-width: none;
 		object-fit: contain;
 		z-index: 1;
+	}
+
+	.hero__polaroid {
+		position: absolute;
+		left: -6%;
+		bottom: 4%;
+		width: 42%;
+		transform: rotate(-8deg);
+		border-radius: var(--radius-sm);
+		overflow: hidden;
+		box-shadow: var(--shadow-card);
+		z-index: 3;
+	}
+
+	.hero__polaroid img {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
 	}
 
 	.hero__note {
