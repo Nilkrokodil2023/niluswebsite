@@ -1,21 +1,21 @@
 ---
 const reviews = [
 	{
-		initials: "EF",
+		image: "/assets/images/esther-fahrendorf.png",
 		name: "Esther Fahrendorf",
 		title: "Online-Marketing, Miss Goodlife",
 		rating: 4,
 		quote: "Deine Ergebnisse sprechen für sich: Unsere Ads sind jetzt nicht nur profitabler, sondern verbrauchen auch weniger Ressourcen. So können wir unser Marketingbudget effizienter einsetzen. Vielen Dank für deine Unterstützung!",
 	},
 	{
-		initials: "CR",
+		image: "/assets/images/christina-ruf.png",
 		name: "Christina Ruf",
 		title: "Online Marketing, GRANDEL",
 		rating: 5,
 		quote: "Nilufar ist für uns eine wertvolle Ansprechpartnerin, mit ihrer Expertise können wir uns kontinuierlich weiterentwickeln. Darüber hinaus macht die Zusammenarbeit mit ihr Spaß.",
 	},
 	{
-		initials: "LW",
+		image: "/assets/images/lie-pei-wu.png",
 		name: "Lie-Pei Wu",
 		title: "Online Marketing, BUDDY & SELLY",
 		rating: 4,
@@ -39,7 +39,7 @@ const reviews = [
 			{reviews.map((r) => (
 				<div class="client-reviews__card">
 					<div class="client-reviews__head">
-						<span class="client-reviews__avatar" aria-hidden="true">{r.initials}</span>
+						<img class="client-reviews__avatar" src={r.image} alt={r.name} width="56" height="56" />
 						<div class="client-reviews__head-text">
 							<div class="client-reviews__stars" aria-hidden="true">
 								{Array.from({ length: 5 }).map((_, i) => (
@@ -133,17 +133,11 @@ const reviews = [
 
 	.client-reviews__avatar {
 		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 		width: 3.5em;
 		height: 3.5em;
 		border-radius: 50%;
-		background-color: var(--color-primary);
-		color: var(--color-accent);
-		font-family: var(--font-heading);
-		font-weight: 600;
-		font-size: 1em;
+		object-fit: cover;
+		display: block;
 	}
 
 	.client-reviews__head-text {
