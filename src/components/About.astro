@@ -12,13 +12,17 @@ import Button from "./Button.astro";
 				<div class="about__card-overlay">
 					<p class="about__card-name">Nilufar Layer</p>
 				</div>
+				<span class="about__badge">16+ Jahre Erfahrung</span>
 			</div>
 
-			<p class="about__description">
-				Über 16 Jahre Erfahrung im Online-Marketing, in der Erstellung von Landingpages und Werbeanzeigen, 100+ gebaute Websites &amp; Landingpages, mehrere Millionen € Umsatz für Kunden durch Verkaufspsychologie &amp; Ads …
-				<br /><br />
-				Klingt alles gut, aber viel wichtiger für dich ist: Du hast erkannt, dass durchschnittliches Marketing – von irgendeinem Freelancer, von dir selbst oder einer Fließband-Agentur – keine Option ist.
-			</p>
+			<div class="about__text">
+				<p class="about__description">
+					Über 16 Jahre Erfahrung im Online-Marketing, in der Erstellung von Landingpages und Werbeanzeigen, 100+ gebaute Websites &amp; Landingpages, mehrere Millionen € Umsatz für Kunden durch Verkaufspsychologie &amp; Ads …
+				</p>
+				<p class="about__description">
+					Klingt alles gut, aber viel wichtiger für dich ist: Du hast erkannt, dass durchschnittliches Marketing – von irgendeinem Freelancer, von dir selbst oder einer Fließband-Agentur – keine Option ist.
+				</p>
+			</div>
 		</div>
 
 		<Button label="ich will mehr erfahren" />
@@ -57,23 +61,26 @@ import Button from "./Button.astro";
 	.about__content {
 		display: flex;
 		align-items: center;
-		gap: 1.5em;
+		gap: 4.5em;
 		width: 100%;
 	}
 
 	.about__card {
 		flex-shrink: 0;
 		position: relative;
-		width: 16.25em;
+		width: 21em;
+		aspect-ratio: 3 / 4;
 		border-radius: var(--radius-lg);
-		overflow: hidden;
+		overflow: visible;
+		box-shadow: var(--shadow-card);
 	}
 
 	.about__card img {
 		width: 100%;
-		height: auto;
+		height: 100%;
 		display: block;
 		object-fit: cover;
+		border-radius: var(--radius-lg);
 	}
 
 	.about__card-overlay {
@@ -81,27 +88,52 @@ import Button from "./Button.astro";
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		padding-block: 1em;
+		padding-block: 1.25em;
 		display: flex;
 		justify-content: center;
+		border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 		background: linear-gradient(to bottom, rgba(17, 25, 12, 0), var(--color-primary) 61.5%);
 	}
 
 	.about__card-name {
 		font-family: var(--font-heading);
 		font-weight: 500;
-		font-size: 1em;
+		font-size: 1.125em;
 		line-height: 1.5;
 		letter-spacing: -0.4px;
 		color: var(--color-text-white);
 	}
 
-	.about__description {
+	.about__badge {
+		position: absolute;
+		bottom: -1.25em;
+		right: -1.5em;
+		padding: 0.75em 1.5em;
+		background-color: var(--color-accent);
+		border-radius: var(--radius-xl);
+		transform: rotate(-4deg);
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 1em;
+		line-height: 1.5;
+		letter-spacing: -0.4px;
+		color: var(--color-primary);
+		white-space: nowrap;
+		box-shadow: var(--shadow-card);
+	}
+
+	.about__text {
 		flex: 1 0 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25em;
+	}
+
+	.about__description {
 		font-family: var(--font-body);
 		font-weight: 400;
 		font-size: 1.25em;
-		line-height: 1.4;
+		line-height: 1.5;
 		letter-spacing: -0.16px;
 		color: var(--color-neutral-7);
 	}
@@ -114,11 +146,13 @@ import Button from "./Button.astro";
 		.about__content {
 			flex-direction: column;
 			align-items: flex-start;
+			gap: 2.5em;
 		}
 
 		.about__card {
 			width: 100%;
-			max-width: 16.25em;
+			max-width: 18em;
+			margin-bottom: 0.5em;
 		}
 	}
 

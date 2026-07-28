@@ -10,6 +10,7 @@ const testimonials = [
 		],
 		name: "Holger Kehr",
 		title: "Geschäftsführer der Verpackungswelt GmbH",
+		objectPosition: "center",
 	},
 	{
 		image: "/assets/images/gabriele-wahl-multerer.jpg",
@@ -21,6 +22,7 @@ const testimonials = [
 		],
 		name: "Gabriele Wahl-Multerer",
 		title: "Geschäftsführerin Park am See Nattika",
+		objectPosition: "center top",
 	},
 	{
 		image: "/assets/images/christian-prem.webp",
@@ -32,6 +34,8 @@ const testimonials = [
 		],
 		name: "Christian Prem",
 		title: "Geschäftsführer eBike PREMium",
+		objectPosition: "center 20%",
+		zoom: true,
 	},
 ];
 ---
@@ -40,46 +44,88 @@ const testimonials = [
 	<div class="testimonials__inner container">
 		<h2 class="testimonials__headline">Was meine Kunden <span class="testimonials__accent">sagen</span></h2>
 
-		<div class="testimonials__list">
-			{testimonials.map((t, i) => (
-				<>
-					<div class:list={["testimonials__content", { "testimonials__content--reverse": i % 2 === 1 }]}>
-						<div class="testimonials__image">
-							<img src={t.image} alt={t.alt} width="600" height="700" />
-						</div>
-
-						<div class="testimonials__text">
-							<svg class="testimonials__quote-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-								<path d="M26 16C18.268 16 12 22.268 12 30v18h18V30h-9c0-5.523 4.477-10 10-10v-4zm26 0c-7.732 0-14 6.268-14 14v18h18V30h-9c0-5.523 4.477-10 10-10v-4z" fill="currentColor"/>
-							</svg>
-
-							<div class="testimonials__quote">
-								{t.blocks.map((b) => (
-									<div class="testimonials__quote-block">
-										<p class="testimonials__quote-label">{b.label}</p>
-										<p class="testimonials__quote-body">{b.body}</p>
-									</div>
-								))}
+		<div class="testimonials__slider" data-slider>
+			<div class="testimonials__track" data-track style={`--slide-count: ${testimonials.length}`}>
+				{testimonials.map((t) => (
+					<div class="testimonials__slide">
+						<div class="testimonials__content">
+							<div class="testimonials__image">
+								<img
+									src={t.image}
+									alt={t.alt}
+									width="600"
+									height="700"
+									style={`object-position: ${t.objectPosition}; ${t.zoom ? "transform: scale(1.55);" : ""}`}
+								/>
 							</div>
 
-							<div class="testimonials__author">
-								<p class="testimonials__author-name">{t.name}</p>
-								<p class="testimonials__author-title">{t.title}</p>
-							</div>
+							<div class="testimonials__text">
+								<svg class="testimonials__quote-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M26 16C18.268 16 12 22.268 12 30v18h18V30h-9c0-5.523 4.477-10 10-10v-4zm26 0c-7.732 0-14 6.268-14 14v18h18V30h-9c0-5.523 4.477-10 10-10v-4z" fill="currentColor"/>
+								</svg>
 
-							<div class="testimonials__rating">
-								<span class="testimonials__rating-bar"></span>
-								<span class="testimonials__rating-dot"></span>
-								<span class="testimonials__rating-dot"></span>
+								<div class="testimonials__quote">
+									{t.blocks.map((b) => (
+										<div class="testimonials__quote-block">
+											<p class="testimonials__quote-label">{b.label}</p>
+											<p class="testimonials__quote-body">{b.body}</p>
+										</div>
+									))}
+								</div>
+
+								<div class="testimonials__author">
+									<p class="testimonials__author-name">{t.name}</p>
+									<p class="testimonials__author-title">{t.title}</p>
+								</div>
 							</div>
 						</div>
 					</div>
-					{i < testimonials.length - 1 && <div class="testimonials__divider"></div>}
-				</>
-			))}
+				))}
+			</div>
+
+			<div class="testimonials__controls">
+				<button type="button" class="testimonials__arrow" data-prev aria-label="Vorheriges Testimonial">
+					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</button>
+				<div class="testimonials__dots" data-dots>
+					{testimonials.map((_, i) => (
+						<button type="button" class="testimonials__dot" data-dot={i} aria-label={`Testimonial ${i + 1}`}></button>
+					))}
+				</div>
+				<button type="button" class="testimonials__arrow" data-next aria-label="Nächstes Testimonial">
+					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</button>
+			</div>
 		</div>
 	</div>
 </section>
+
+<script>
+	function initTestimonialSliders() {
+		document.querySelectorAll<HTMLElement>("[data-slider]").forEach((slider) => {
+			const track = slider.querySelector<HTMLElement>("[data-track]");
+			const slides = slider.querySelectorAll<HTMLElement>(".testimonials__slide");
+			const dots = slider.querySelectorAll<HTMLElement>("[data-dot]");
+			const prevBtn = slider.querySelector<HTMLElement>("[data-prev]");
+			const nextBtn = slider.querySelector<HTMLElement>("[data-next]");
+			let index = 0;
+
+			function goTo(i: number) {
+				index = (i + slides.length) % slides.length;
+				if (track) track.style.transform = `translateX(-${index * 100}%)`;
+				dots.forEach((dot, di) => dot.classList.toggle("is-active", di === index));
+			}
+
+			prevBtn?.addEventListener("click", () => goTo(index - 1));
+			nextBtn?.addEventListener("click", () => goTo(index + 1));
+			dots.forEach((dot, di) => dot.addEventListener("click", () => goTo(di)));
+
+			goTo(0);
+		});
+	}
+
+	initTestimonialSliders();
+</script>
 
 <style>
 	.testimonials {
@@ -109,18 +155,24 @@ const testimonials = [
 		color: var(--color-accent);
 	}
 
-	.testimonials__list {
-		display: flex;
-		flex-direction: column;
-		gap: 4.5em;
+	.testimonials__slider {
 		width: 100%;
 		max-width: 61em;
+		display: flex;
+		flex-direction: column;
+		gap: 2.5em;
+		overflow: hidden;
 	}
 
-	.testimonials__divider {
+	.testimonials__track {
+		display: flex;
 		width: 100%;
-		height: 1px;
-		background-color: var(--color-neutral-6);
+		transition: transform 0.5s ease;
+	}
+
+	.testimonials__slide {
+		flex: 0 0 100%;
+		min-width: 0;
 	}
 
 	.testimonials__content {
@@ -128,10 +180,6 @@ const testimonials = [
 		align-items: center;
 		gap: 3.6875em;
 		width: 100%;
-	}
-
-	.testimonials__content--reverse {
-		flex-direction: row-reverse;
 	}
 
 	.testimonials__image {
@@ -211,24 +259,56 @@ const testimonials = [
 		color: var(--color-neutral-3);
 	}
 
-	.testimonials__rating {
+	.testimonials__controls {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5em;
+	}
+
+	.testimonials__arrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75em;
+		height: 2.75em;
+		flex-shrink: 0;
+		background-color: transparent;
+		border: 1px solid var(--color-neutral-6);
+		border-radius: 50%;
+		color: var(--color-text-white);
+		cursor: pointer;
+	}
+
+	.testimonials__arrow:hover {
+		background-color: var(--color-neutral-6);
+	}
+
+	.testimonials__arrow svg {
+		width: 1.25em;
+		height: 1.25em;
+	}
+
+	.testimonials__dots {
 		display: flex;
 		align-items: center;
 		gap: 0.5em;
 	}
 
-	.testimonials__rating-bar {
-		width: 2.5em;
-		height: 0.5em;
-		border-radius: 1em;
-		background-color: var(--color-accent);
-	}
-
-	.testimonials__rating-dot {
+	.testimonials__dot {
 		width: 0.5em;
 		height: 0.5em;
-		border-radius: 1em;
+		border-radius: 50%;
 		background-color: var(--color-neutral-6);
+		border: none;
+		cursor: pointer;
+		padding: 0;
+	}
+
+	.testimonials__dot.is-active {
+		width: 2.5em;
+		border-radius: 1em;
+		background-color: var(--color-accent);
 	}
 
 	@media (max-width: 991px) {
@@ -236,8 +316,7 @@ const testimonials = [
 			font-size: 3em;
 		}
 
-		.testimonials__content,
-		.testimonials__content--reverse {
+		.testimonials__content {
 			flex-direction: column;
 		}
 
@@ -258,10 +337,6 @@ const testimonials = [
 
 		.testimonials__quote-body {
 			font-size: 1em;
-		}
-
-		.testimonials__list {
-			gap: 3em;
 		}
 	}
 </style>

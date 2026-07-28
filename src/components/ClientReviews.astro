@@ -1,0 +1,211 @@
+---
+const reviews = [
+	{
+		initials: "EF",
+		name: "Esther Fahrendorf",
+		title: "Online-Marketing, Miss Goodlife",
+		rating: 4,
+		quote: "Deine Ergebnisse sprechen für sich: Unsere Ads sind jetzt nicht nur profitabler, sondern verbrauchen auch weniger Ressourcen. So können wir unser Marketingbudget effizienter einsetzen. Vielen Dank für deine Unterstützung!",
+	},
+	{
+		initials: "CR",
+		name: "Christina Ruf",
+		title: "Online Marketing, GRANDEL",
+		rating: 5,
+		quote: "Nilufar ist für uns eine wertvolle Ansprechpartnerin, mit ihrer Expertise können wir uns kontinuierlich weiterentwickeln. Darüber hinaus macht die Zusammenarbeit mit ihr Spaß.",
+	},
+	{
+		initials: "LW",
+		name: "Lie-Pei Wu",
+		title: "Online Marketing, BUDDY & SELLY",
+		rating: 4,
+		quote: "Schon nach kurzer Zeit haben wir eine deutliche Steigerung unserer Conversionrate. Die Kombination aus kreativem Ansatz und tiefem Verständnis für Verbraucherpsychologie hat uns wirklich überzeugt.",
+	},
+];
+---
+
+<section class="client-reviews">
+	<div class="client-reviews__inner container">
+		<div class="client-reviews__eyebrow">
+			<span class="client-reviews__eyebrow-dash"></span>
+			<span>Mehr Kundenstimmen</span>
+		</div>
+
+		<h2 class="client-reviews__headline">
+			Was Kunden über die <span class="client-reviews__accent">Zusammenarbeit</span> sagen.
+		</h2>
+
+		<div class="client-reviews__grid">
+			{reviews.map((r) => (
+				<div class="client-reviews__card">
+					<div class="client-reviews__head">
+						<span class="client-reviews__avatar" aria-hidden="true">{r.initials}</span>
+						<div class="client-reviews__head-text">
+							<div class="client-reviews__stars" aria-hidden="true">
+								{Array.from({ length: 5 }).map((_, i) => (
+									<svg viewBox="0 0 20 20" class:list={["client-reviews__star", { "is-filled": i < r.rating }]}>
+										<path d="M10 1.5l2.59 5.25 5.79.84-4.19 4.09.99 5.77L10 14.7l-5.18 2.75.99-5.77L1.62 7.6l5.79-.84L10 1.5z" fill="currentColor"/>
+									</svg>
+								))}
+							</div>
+							<p class="client-reviews__name">{r.name}</p>
+							<p class="client-reviews__title">{r.title}</p>
+						</div>
+					</div>
+					<p class="client-reviews__quote">{r.quote}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.client-reviews {
+		width: 100%;
+		background-color: var(--color-neutral-2);
+		padding-block: 5em;
+	}
+
+	.client-reviews__inner {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+	}
+
+	.client-reviews__eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.75em;
+		font-family: var(--font-body);
+		font-weight: 600;
+		font-size: 0.875em;
+		letter-spacing: 1.5px;
+		text-transform: uppercase;
+		color: var(--color-primary);
+	}
+
+	.client-reviews__eyebrow-dash {
+		width: 2em;
+		height: 2px;
+		background-color: var(--color-accent);
+	}
+
+	.client-reviews__headline {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 3em;
+		line-height: 1.2;
+		letter-spacing: -1.2px;
+		color: var(--color-primary);
+		max-width: 14em;
+	}
+
+	.client-reviews__accent {
+		background-color: var(--color-accent);
+		padding-inline: 0.15em;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+	}
+
+	.client-reviews__grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5em;
+		margin-top: 2em;
+	}
+
+	.client-reviews__card {
+		background-color: white;
+		border: 1px solid var(--color-primary);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-card);
+		padding: 1.75em;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+	}
+
+	.client-reviews__head {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+	}
+
+	.client-reviews__avatar {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3.5em;
+		height: 3.5em;
+		border-radius: 50%;
+		background-color: var(--color-primary);
+		color: var(--color-accent);
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 1em;
+	}
+
+	.client-reviews__head-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25em;
+	}
+
+	.client-reviews__stars {
+		display: flex;
+		gap: 0.125em;
+	}
+
+	.client-reviews__star {
+		width: 1em;
+		height: 1em;
+		color: var(--color-neutral-4);
+	}
+
+	.client-reviews__star.is-filled {
+		color: var(--color-primary);
+	}
+
+	.client-reviews__name {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 1.125em;
+		color: var(--color-primary);
+	}
+
+	.client-reviews__title {
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 0.875em;
+		color: var(--color-text-secondary);
+	}
+
+	.client-reviews__quote {
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 1em;
+		line-height: 1.55;
+		color: var(--color-neutral-1);
+	}
+
+	@media (max-width: 991px) {
+		.client-reviews__headline {
+			font-size: 2.5em;
+		}
+
+		.client-reviews__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.client-reviews {
+			padding-block: 3em;
+		}
+
+		.client-reviews__headline {
+			font-size: 2em;
+		}
+	}
+</style>
