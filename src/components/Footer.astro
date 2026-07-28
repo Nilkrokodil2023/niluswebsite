@@ -7,9 +7,9 @@ const year = new Date().getFullYear();
 		<div class="footer__links">
 			<a href="/" class="footer__logo" aria-label="Nilufar Layer, Home">
 				<span class="footer__logo-icon" aria-hidden="true">
-					<img src="/assets/images/vector.svg" alt="" width="16" height="16" />
-					<img src="/assets/images/vector1.svg" alt="" width="16" height="16" />
-					<img src="/assets/images/vector2.svg" alt="" width="16" height="16" />
+					<img src="/assets/images/vector.svg" alt="" class="footer__logo-shape footer__logo-shape--a" />
+					<img src="/assets/images/vector1.svg" alt="" class="footer__logo-shape footer__logo-shape--b" />
+					<img src="/assets/images/vector2.svg" alt="" class="footer__logo-shape footer__logo-shape--c" />
 				</span>
 				<span class="footer__logo-text">Nilufar Layer</span>
 			</a>
@@ -58,13 +58,44 @@ const year = new Date().getFullYear();
 	}
 
 	.footer__logo-icon {
-		display: inline-flex;
-		gap: 0.1em;
+		position: relative;
+		display: inline-block;
+		width: 1.875em;
+		height: 1.875em;
+		flex-shrink: 0;
 	}
 
-	.footer__logo-icon img {
+	.footer__logo-shape {
+		position: absolute;
+	}
+
+	.footer__logo-shape--a,
+	.footer__logo-shape--c {
+		filter: brightness(0) invert(1);
+	}
+
+	.footer__logo-shape--a {
+		left: 0.791em;
+		top: 0.768em;
 		width: 1em;
 		height: 1em;
+		z-index: 1;
+	}
+
+	.footer__logo-shape--b {
+		left: 0.187em;
+		top: 0.163em;
+		width: 1.546em;
+		height: 1.545em;
+		z-index: 2;
+	}
+
+	.footer__logo-shape--c {
+		left: 0.129em;
+		top: 0.104em;
+		width: 1.002em;
+		height: 1.003em;
+		z-index: 3;
 	}
 
 	.footer__logo-text {

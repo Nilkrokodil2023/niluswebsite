@@ -9,9 +9,9 @@ const links = ["Methode", "Referenzen", "Über mich", "FAQ"];
 		<nav class="navbar__nav">
 			<a href="/" class="navbar__logo" aria-label="Nilufar Layer, Home">
 				<span class="navbar__logo-icon" aria-hidden="true">
-					<img src="/assets/images/vector.svg" alt="" width="16" height="16" />
-					<img src="/assets/images/vector1.svg" alt="" width="16" height="16" />
-					<img src="/assets/images/vector2.svg" alt="" width="16" height="16" />
+					<img src="/assets/images/vector.svg" alt="" class="navbar__logo-shape navbar__logo-shape--a" />
+					<img src="/assets/images/vector1.svg" alt="" class="navbar__logo-shape navbar__logo-shape--b" />
+					<img src="/assets/images/vector2.svg" alt="" class="navbar__logo-shape navbar__logo-shape--c" />
 				</span>
 				<span class="navbar__logo-text">Nilufar Layer</span>
 			</a>
@@ -56,13 +56,39 @@ const links = ["Methode", "Referenzen", "Über mich", "FAQ"];
 	}
 
 	.navbar__logo-icon {
-		display: inline-flex;
-		gap: 0.1em;
+		position: relative;
+		display: inline-block;
+		width: 1.875em;
+		height: 1.875em;
+		flex-shrink: 0;
 	}
 
-	.navbar__logo-icon img {
+	.navbar__logo-shape {
+		position: absolute;
+	}
+
+	.navbar__logo-shape--a {
+		left: 0.791em;
+		top: 0.768em;
 		width: 1em;
 		height: 1em;
+		z-index: 1;
+	}
+
+	.navbar__logo-shape--b {
+		left: 0.187em;
+		top: 0.163em;
+		width: 1.546em;
+		height: 1.545em;
+		z-index: 2;
+	}
+
+	.navbar__logo-shape--c {
+		left: 0.129em;
+		top: 0.104em;
+		width: 1.002em;
+		height: 1.003em;
+		z-index: 3;
 	}
 
 	.navbar__logo-text {
