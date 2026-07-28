@@ -20,11 +20,11 @@ import Button from "./Button.astro";
 		<div class="hero__content">
 			<div class="hero__text">
 				<div class="hero__headline-wrap">
-					<span class="hero__tag" aria-hidden="false" data-animate="up">
+					<span class="hero__tag" aria-hidden="false" data-hero-badge>
 						<img src="/assets/images/material-symbols-diamond.svg" alt="" width="24" height="24" />
 						für hochpreisige Dienstleistungen
 					</span>
-					<h1 class="hero__headline">Neukunden gewinnen leicht gemacht</h1>
+					<h1 class="hero__headline" data-hero-heading>Neukunden gewinnen leicht gemacht</h1>
 				</div>
 				<p class="hero__description">
 					Du denkst, es reicht aus, der Beste zu sein – aber dann merkst du: Kunden kaufen nicht beim Besten, sondern beim sichtbarsten Anbieter.
@@ -34,7 +34,7 @@ import Button from "./Button.astro";
 		</div>
 
 		<div class="hero__visual">
-			<div class="hero__card">
+			<div class="hero__card" data-hero-card>
 				<div class="hero__card-skeleton" aria-hidden="true">
 					<div class="hero__skeleton-row"><span class="hero__skeleton-dot"></span><span class="hero__skeleton-bar"></span><span class="hero__skeleton-dot"></span></div>
 					<div class="hero__skeleton-row"><span class="hero__skeleton-dot"></span><span class="hero__skeleton-bar"></span><span class="hero__skeleton-dot"></span></div>
@@ -52,16 +52,75 @@ import Button from "./Button.astro";
 					class="hero__card-photo"
 				/>
 			</div>
-			<div class="hero__polaroid">
+			<div class="hero__polaroid" data-hero-card>
 				<img src="/assets/images/image1.png" alt="Agentur-Score: Sehr gut 4,7, 8 Bewertungen, powered by Agenturmarkt.de" width="262" height="165" />
 			</div>
-			<div class="hero__note">
+			<div class="hero__note" data-hero-card>
 				<p class="hero__note-title">Täglich qualifizierte Anfragen.</p>
 				<p class="hero__note-text">Mit einer Website und Werbeanzeigen, die 24/7 für dich arbeiten</p>
 			</div>
 		</div>
 	</div>
 </section>
+
+<script>
+	import gsap from "gsap";
+	import { SplitText } from "gsap/SplitText";
+
+	gsap.registerPlugin(SplitText);
+
+	function initHeroEntrance() {
+		const heading = document.querySelector<HTMLElement>("[data-hero-heading]");
+		const badge = document.querySelector<HTMLElement>("[data-hero-badge]");
+		const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-hero-card]"));
+		const all = [heading, badge, ...cards].filter(Boolean) as HTMLElement[];
+		if (!all.length) return;
+
+		const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		if (reduce) {
+			gsap.set(all, { clearProps: "all", opacity: 1 });
+			return;
+		}
+
+		document.fonts.ready.then(() => {
+			gsap.set(all, { opacity: 1 });
+
+			const headingSplit = heading ? new SplitText(heading, { type: "words" }) : null;
+
+			if (headingSplit) {
+				gsap.from(headingSplit.words, {
+					yPercent: -100,
+					opacity: 0,
+					ease: "sine.out",
+					duration: 0.8,
+					stagger: { amount: 0.4 },
+					onComplete: () => gsap.set(headingSplit.words, { clearProps: "transform,opacity" }),
+				});
+			}
+
+			if (badge) {
+				gsap.from(badge, {
+					opacity: 0,
+					duration: 0.7,
+					ease: "power3.out",
+				});
+			}
+
+			if (cards.length) {
+				gsap.from(cards, {
+					opacity: 0,
+					yPercent: 15,
+					duration: 0.7,
+					ease: "power3.out",
+					stagger: { amount: 0.3 },
+					onComplete: () => gsap.set(cards, { clearProps: "transform" }),
+				});
+			}
+		});
+	}
+
+	initHeroEntrance();
+</script>
 
 <style>
 	.hero {
@@ -141,6 +200,7 @@ import Button from "./Button.astro";
 		padding: 0.75em 1.5em;
 		background-color: var(--color-accent);
 		border-radius: var(--radius-xl);
+		transform: rotate(-4deg);
 		font-family: var(--font-heading);
 		font-weight: 600;
 		font-size: 1em;
@@ -148,14 +208,6 @@ import Button from "./Button.astro";
 		letter-spacing: -0.4px;
 		color: var(--color-primary);
 		white-space: nowrap;
-	}
-
-	.hero__tag[data-animate] {
-		transform: rotate(-4deg) translateY(2em);
-	}
-
-	.hero__tag[data-animate].is-visible {
-		transform: rotate(-4deg) translateY(0);
 	}
 
 	.hero__tag img {
@@ -341,14 +393,7 @@ import Button from "./Button.astro";
 		.hero__tag {
 			position: static;
 			margin-bottom: 1em;
-		}
-
-		.hero__tag[data-animate] {
-			transform: rotate(-2deg) translateY(2em);
-		}
-
-		.hero__tag[data-animate].is-visible {
-			transform: rotate(-2deg) translateY(0);
+			transform: rotate(-2deg);
 		}
 
 		.hero__headline-wrap {
