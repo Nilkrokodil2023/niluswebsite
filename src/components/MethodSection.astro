@@ -21,15 +21,15 @@ const months = ["JANUAR", "FEBRUAR", "MÄRZ", "APRIL", "MAI"];
 						<p class="method__card-title">Deine Zielgruppe</p>
 						<div class="method__card-placeholder">
 							<div class="method__icon-row">
-								<span class="method__icon-btn" aria-hidden="true">
+								<span class="method__icon-btn method__icon-btn--float" style="animation-delay: 0s" aria-hidden="true">
 									<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor"/></svg>
 								</span>
-								<span class="method__icon-btn" aria-hidden="true">
+								<span class="method__icon-btn method__icon-btn--float" style="animation-delay: 0.3s" aria-hidden="true">
 									<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="currentColor"/></svg>
 								</span>
 							</div>
 							<div class="method__icon-row">
-								<span class="method__icon-btn" aria-hidden="true">
+								<span class="method__icon-btn method__icon-btn--float" style="animation-delay: 0.6s" aria-hidden="true">
 									<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 12a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm7 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2 20c0-3 3-5.5 7-5.5s7 2.5 7 5.5v1H2v-1zm14-4.2c2.9.3 5 2.3 5 4.7v.5h-4v-.5c0-1.6-.4-3-1-4.2z" fill="currentColor"/></svg>
 								</span>
 							</div>
@@ -324,6 +324,22 @@ const months = ["JANUAR", "FEBRUAR", "MÄRZ", "APRIL", "MAI"];
 	.method__icon-btn svg {
 		width: 1.5em;
 		height: 1.5em;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.method__icon-btn--float {
+			animation: icon-float 3s ease-in-out infinite;
+		}
+	}
+
+	@keyframes icon-float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-0.5em);
+		}
 	}
 
 	.method__card-image {
