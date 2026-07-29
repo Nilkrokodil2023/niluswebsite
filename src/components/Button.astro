@@ -4,15 +4,23 @@ interface Props {
 	href?: string;
 	size?: "sm" | "md";
 	sweep?: boolean;
+	contact?: boolean;
 }
 
-const { label, href = "#", size = "md", sweep = false } = Astro.props;
+const { label, href = "#", size = "md", sweep = false, contact = false } = Astro.props;
 ---
 
-<a href={href} class={`btn-pill btn-pill--${size}`} data-sweep={sweep ? "true" : undefined}>
-	{sweep && <span class="btn-pill__sweep" aria-hidden="true"></span>}
-	<span class="btn-pill__label">{label}</span>
-</a>
+{contact ? (
+	<button type="button" class={`btn-pill btn-pill--${size}`} data-sweep={sweep ? "true" : undefined} data-modal-open="kontakt">
+		{sweep && <span class="btn-pill__sweep" aria-hidden="true"></span>}
+		<span class="btn-pill__label">{label}</span>
+	</button>
+) : (
+	<a href={href} class={`btn-pill btn-pill--${size}`} data-sweep={sweep ? "true" : undefined}>
+		{sweep && <span class="btn-pill__sweep" aria-hidden="true"></span>}
+		<span class="btn-pill__label">{label}</span>
+	</a>
+)}
 
 <script>
 	import gsap from "gsap";
@@ -72,6 +80,9 @@ const { label, href = "#", size = "md", sweep = false } = Astro.props;
 		white-space: nowrap;
 		text-decoration: none;
 		overflow: hidden;
+		border: none;
+		appearance: none;
+		cursor: pointer;
 	}
 
 	.btn-pill--md {
