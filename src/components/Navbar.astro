@@ -1,7 +1,12 @@
 ---
 import Button from "./Button.astro";
 
-const links = ["Methode", "Referenzen", "Über mich", "FAQ"];
+const links = [
+	{ label: "Methode", href: "#methode" },
+	{ label: "Referenzen", href: "#referenzen" },
+	{ label: "Über mich", href: "#ueber-mich" },
+	{ label: "FAQ", href: "#faq" },
+];
 ---
 
 <header class="navbar">
@@ -19,7 +24,7 @@ const links = ["Methode", "Referenzen", "Über mich", "FAQ"];
 			<input type="checkbox" id="nav-toggle" class="navbar__toggle-input" />
 
 			<div class="navbar__links">
-				{links.map((link) => <a href="#" class="navbar__link">{link}</a>)}
+				{links.map((link) => <a href={link.href} class="navbar__link">{link.label}</a>)}
 				<Button label="Zusammenarbeit anfragen" size="sm" contact />
 			</div>
 

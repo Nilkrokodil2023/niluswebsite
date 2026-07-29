@@ -121,6 +121,13 @@ html {
   scroll-behavior: smooth;
 }
 
+#methode,
+#referenzen,
+#ueber-mich,
+#faq {
+  scroll-margin-top: 6em;
+}
+
 body {
   font-family: var(--font-body);
   font-size: var(--size-font);
