@@ -53,7 +53,14 @@ import Button from "./Button.astro";
 				/>
 			</div>
 			<div class="hero__polaroid" data-hero-card>
-				<img src="/assets/images/image1.png" alt="Agentur-Score: Sehr gut 4,7, 8 Bewertungen, powered by Agenturmarkt.de" width="262" height="165" />
+				<div
+					class="trustmarkt-widget"
+					data-company-id="a9GXlO10onGawmQADqnv"
+					data-widget-id="eWzmbJD12BLMvV9aoEAx"
+					style="height: 168px;"
+				>
+					<a rel="dofollow" href="https://agenturmarkt.de/agentur/nilufar-layer-muenchen" aria-label="Agenturmarkt Profil von Nilufar Layer"></a>
+				</div>
 			</div>
 			<div class="hero__note" data-hero-card>
 				<p class="hero__note-title">Täglich qualifizierte Anfragen</p>
@@ -334,13 +341,6 @@ import Button from "./Button.astro";
 		overflow: hidden;
 		box-shadow: var(--shadow-card);
 		z-index: 3;
-	}
-
-	.hero__polaroid img {
-		width: 100%;
-		height: auto;
-		display: block;
-		object-fit: cover;
 	}
 
 	.hero__note {
