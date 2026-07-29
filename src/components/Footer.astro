@@ -654,11 +654,11 @@ const year = new Date().getFullYear();
 	.kontakt-card {
 		display: flex;
 		align-items: flex-start;
-		gap: 1em;
+		gap: 1.25em;
 		width: 100%;
 		background-color: white;
-		border-radius: var(--radius-md);
-		padding: 1.25em;
+		border-radius: 1.25em;
+		padding: 1.5em;
 		text-decoration: none;
 	}
 
@@ -679,7 +679,7 @@ const year = new Date().getFullYear();
 	}
 
 	.kontakt-card--dark .kontakt-card__desc {
-		color: var(--color-neutral-3);
+		color: var(--color-text-white);
 	}
 
 	.kontakt-card--dark .kontakt-card__icon {
@@ -723,16 +723,18 @@ const year = new Date().getFullYear();
 
 	.kontakt-card__title {
 		font-family: var(--font-heading);
-		font-weight: 600;
-		font-size: 1.125em;
+		font-weight: 500;
+		font-size: 1.25em;
+		letter-spacing: -0.008em;
 		color: var(--color-primary);
 	}
 
 	.kontakt-card__desc {
 		font-family: var(--font-body);
 		font-weight: 400;
-		font-size: 0.9375em;
+		font-size: 1em;
 		line-height: 1.5;
+		letter-spacing: -0.008em;
 		color: var(--color-neutral-1);
 	}
 
