@@ -3,17 +3,61 @@ interface Props {
 	label: string;
 	href?: string;
 	size?: "sm" | "md";
+	sweep?: boolean;
 }
 
-const { label, href = "#", size = "md" } = Astro.props;
+const { label, href = "#", size = "md", sweep = false } = Astro.props;
 ---
 
-<a href={href} class={`btn-pill btn-pill--${size}`}>
-	{label}
+<a href={href} class={`btn-pill btn-pill--${size}`} data-sweep={sweep ? "true" : undefined}>
+	{sweep && <span class="btn-pill__sweep" aria-hidden="true"></span>}
+	<span class="btn-pill__label">{label}</span>
 </a>
+
+<script>
+	import gsap from "gsap";
+
+	function initSweepButtons() {
+		const buttons = document.querySelectorAll<HTMLElement>('[data-sweep="true"]');
+		if (!buttons.length) return;
+
+		const mm = gsap.matchMedia();
+
+		mm.add("(prefers-reduced-motion: no-preference)", () => {
+			buttons.forEach((button) => {
+				const sweep = button.querySelector<HTMLElement>(".btn-pill__sweep");
+				if (!sweep) return;
+				let tween: gsap.core.Tween | undefined;
+
+				button.addEventListener("mouseenter", () => {
+					tween?.kill();
+					gsap.set(sweep, { x: "-100%", skewX: -15 });
+					tween = gsap.to(sweep, {
+						x: "200%",
+						duration: 1.1,
+						ease: "power1.out",
+					});
+				});
+
+				button.addEventListener("mouseleave", () => {
+					tween?.kill();
+					tween = gsap.to(sweep, {
+						x: "200%",
+						duration: 0.35,
+						ease: "power2.in",
+						onComplete: () => gsap.set(sweep, { x: "-200%" }),
+					});
+				});
+			});
+		});
+	}
+
+	initSweepButtons();
+</script>
 
 <style>
 	.btn-pill {
+		position: relative;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -27,6 +71,7 @@ const { label, href = "#", size = "md" } = Astro.props;
 		border-radius: var(--radius-xl);
 		white-space: nowrap;
 		text-decoration: none;
+		overflow: hidden;
 	}
 
 	.btn-pill--md {
@@ -37,7 +82,38 @@ const { label, href = "#", size = "md" } = Astro.props;
 		padding: 0.75em 1.5em;
 	}
 
-	.btn-pill:hover {
+	.btn-pill:not([data-sweep="true"]):hover {
 		opacity: 0.85;
+	}
+
+	.btn-pill__label {
+		position: relative;
+		z-index: 2;
+	}
+
+	.btn-pill__sweep {
+		position: absolute;
+		top: -30%;
+		bottom: -30%;
+		width: 60%;
+		z-index: 1;
+		pointer-events: none;
+		background: linear-gradient(
+			105deg,
+			transparent 0%,
+			transparent 20%,
+			rgba(230, 255, 2, 0.25) 35%,
+			rgba(230, 255, 2, 0.55) 50%,
+			rgba(230, 255, 2, 0.25) 65%,
+			transparent 80%,
+			transparent 100%
+		);
+		transform: translateX(-200%) skewX(-15deg);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.btn-pill__sweep {
+			display: none;
+		}
 	}
 </style>
