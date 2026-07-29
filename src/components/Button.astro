@@ -93,6 +93,7 @@ const { label, href = "#", size = "md", sweep = false } = Astro.props;
 
 	.btn-pill__sweep {
 		position: absolute;
+		left: 0;
 		top: -30%;
 		bottom: -30%;
 		width: 60%;
@@ -101,11 +102,11 @@ const { label, href = "#", size = "md", sweep = false } = Astro.props;
 		background: linear-gradient(
 			105deg,
 			transparent 0%,
-			transparent 20%,
-			rgba(230, 255, 2, 0.25) 35%,
-			rgba(230, 255, 2, 0.55) 50%,
-			rgba(230, 255, 2, 0.25) 65%,
-			transparent 80%,
+			transparent 15%,
+			rgba(230, 255, 2, 0.5) 35%,
+			rgba(255, 255, 255, 0.9) 50%,
+			rgba(230, 255, 2, 0.5) 65%,
+			transparent 85%,
 			transparent 100%
 		);
 		transform: translateX(-200%) skewX(-15deg);
