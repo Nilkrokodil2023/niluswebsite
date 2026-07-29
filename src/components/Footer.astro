@@ -17,7 +17,7 @@ const year = new Date().getFullYear();
 			<nav class="footer__nav" aria-label="Rechtliches">
 				<p class="footer__nav-heading">Rechtliches</p>
 				<a href="/datenschutz" class="footer__nav-link">Datenschutz</a>
-				<a href="/impressum" class="footer__nav-link">Impressum</a>
+				<button type="button" class="footer__nav-link footer__nav-link--button" data-modal-open="impressum">Impressum</button>
 				<a href="/kontakt" class="footer__nav-link">Kontakt</a>
 			</nav>
 		</div>
@@ -28,6 +28,64 @@ const year = new Date().getFullYear();
 		</div>
 	</div>
 </footer>
+
+<div class="modal" data-modal="impressum" hidden>
+	<div class="modal__backdrop" data-modal-close></div>
+	<div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="impressum-title">
+		<button type="button" class="modal__close" data-modal-close aria-label="Schließen">
+			<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+				<path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+			</svg>
+		</button>
+		<h2 id="impressum-title" class="modal__title">Impressum</h2>
+		<div class="modal__body">
+			<p>Creative Ragazzi UG<br />Nilufar Layer<br />Tal 44<br />80331 München</p>
+			<p>Vertreten durch: Nilufar Layer</p>
+			<p>Umsatzsteuer-ID: DE460839613</p>
+			<p>E-Mail: <a href="mailto:hello@nilufarlayer.de">hello@nilufarlayer.de</a></p>
+		</div>
+	</div>
+</div>
+
+<script>
+	function initModals() {
+		const modals = document.querySelectorAll<HTMLElement>("[data-modal]");
+		if (!modals.length) return;
+
+		function closeModal(modal: HTMLElement) {
+			modal.hidden = true;
+			document.body.style.overflow = "";
+		}
+
+		function openModal(modal: HTMLElement) {
+			modal.hidden = false;
+			document.body.style.overflow = "hidden";
+		}
+
+		modals.forEach((modal) => {
+			modal.querySelectorAll<HTMLElement>("[data-modal-close]").forEach((el) => {
+				el.addEventListener("click", () => closeModal(modal));
+			});
+		});
+
+		document.querySelectorAll<HTMLElement>("[data-modal-open]").forEach((trigger) => {
+			trigger.addEventListener("click", () => {
+				const name = trigger.getAttribute("data-modal-open");
+				const modal = document.querySelector<HTMLElement>(`[data-modal="${name}"]`);
+				if (modal) openModal(modal);
+			});
+		});
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key !== "Escape") return;
+			modals.forEach((modal) => {
+				if (!modal.hidden) closeModal(modal);
+			});
+		});
+	}
+
+	initModals();
+</script>
 
 <style>
 	.footer {
@@ -132,6 +190,14 @@ const year = new Date().getFullYear();
 		color: var(--color-text-white);
 	}
 
+	.footer__nav-link--button {
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+		text-align: left;
+	}
+
 	.footer__copyright {
 		display: flex;
 		align-items: center;
@@ -155,6 +221,93 @@ const year = new Date().getFullYear();
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 0.5em;
+		}
+	}
+
+	.modal {
+		position: fixed;
+		inset: 0;
+		z-index: 200;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1.5em;
+	}
+
+	.modal[hidden] {
+		display: none;
+	}
+
+	.modal__backdrop {
+		position: absolute;
+		inset: 0;
+		background-color: rgba(17, 25, 12, 0.6);
+	}
+
+	.modal__dialog {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		max-width: 28em;
+		max-height: 85vh;
+		overflow-y: auto;
+		background-color: white;
+		border-radius: var(--radius-lg);
+		padding: 2.5em;
+		box-shadow: var(--shadow-card);
+	}
+
+	.modal__close {
+		position: absolute;
+		top: 1.25em;
+		right: 1.25em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2em;
+		height: 2em;
+		background: none;
+		border: none;
+		border-radius: 50%;
+		color: var(--color-primary);
+		cursor: pointer;
+	}
+
+	.modal__close:hover {
+		background-color: var(--color-neutral-2);
+	}
+
+	.modal__close svg {
+		width: 1.25em;
+		height: 1.25em;
+	}
+
+	.modal__title {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 1.75em;
+		line-height: 1.2;
+		letter-spacing: -0.6px;
+		color: var(--color-primary);
+		margin-bottom: 0.75em;
+	}
+
+	.modal__body p {
+		font-family: var(--font-body);
+		font-weight: 400;
+		font-size: 1em;
+		line-height: 1.6;
+		color: var(--color-neutral-1);
+		margin-bottom: 1em;
+	}
+
+	.modal__body a {
+		color: var(--color-primary);
+	}
+
+	@media (max-width: 767px) {
+		.modal__dialog {
+			padding: 2em 1.5em;
 		}
 	}
 </style>
