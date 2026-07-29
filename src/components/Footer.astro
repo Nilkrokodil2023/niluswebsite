@@ -27,25 +27,25 @@ const year = new Date().getFullYear();
 			<p>All rights reserved.</p>
 		</div>
 	</div>
-</footer>
 
-<div class="modal" data-modal="impressum" hidden>
-	<div class="modal__backdrop" data-modal-close></div>
-	<div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="impressum-title">
-		<button type="button" class="modal__close" data-modal-close aria-label="Schließen">
-			<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-				<path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-			</svg>
-		</button>
-		<h2 id="impressum-title" class="modal__title">Impressum</h2>
-		<div class="modal__body">
-			<p>Creative Ragazzi UG<br />Nilufar Layer<br />Tal 44<br />80331 München</p>
-			<p>Vertreten durch: Nilufar Layer</p>
-			<p>Umsatzsteuer-ID: DE460839613</p>
-			<p>E-Mail: <a href="mailto:hello@nilufarlayer.de">hello@nilufarlayer.de</a></p>
+	<div class="modal" data-modal="impressum" hidden>
+		<div class="modal__backdrop" data-modal-close></div>
+		<div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="impressum-title">
+			<button type="button" class="modal__close" data-modal-close aria-label="Schließen">
+				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+					<path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+			</button>
+			<h2 id="impressum-title" class="modal__title">Impressum</h2>
+			<div class="modal__body">
+				<p>Creative Ragazzi UG<br />Nilufar Layer<br />Tal 44<br />80331 München</p>
+				<p>Vertreten durch: Nilufar Layer</p>
+				<p>Umsatzsteuer-ID: DE460839613</p>
+				<p>E-Mail: <a href="mailto:hello@nilufarlayer.de">hello@nilufarlayer.de</a></p>
+			</div>
 		</div>
 	</div>
-</div>
+</footer>
 
 <script>
 	function initModals() {
@@ -89,6 +89,7 @@ const year = new Date().getFullYear();
 
 <style>
 	.footer {
+		position: relative;
 		width: 100%;
 		background-color: var(--color-primary);
 		padding-block: 3.25em;
@@ -225,7 +226,7 @@ const year = new Date().getFullYear();
 	}
 
 	.modal {
-		position: fixed;
+		position: absolute;
 		inset: 0;
 		z-index: 200;
 		display: flex;
