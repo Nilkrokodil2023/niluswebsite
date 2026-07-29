@@ -60,10 +60,6 @@ const testimonials = [
 							</div>
 
 							<div class="testimonials__text">
-								<svg class="testimonials__quote-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-									<path d="M26 16C18.268 16 12 22.268 12 30v18h18V30h-9c0-5.523 4.477-10 10-10v-4zm26 0c-7.732 0-14 6.268-14 14v18h18V30h-9c0-5.523 4.477-10 10-10v-4z" fill="currentColor"/>
-								</svg>
-
 								<div class="testimonials__quote">
 									{t.blocks.map((b) => (
 										<div class="testimonials__quote-block">
@@ -205,12 +201,6 @@ const testimonials = [
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 2.5em;
-	}
-
-	.testimonials__quote-icon {
-		width: 4em;
-		height: 4em;
-		color: var(--color-accent);
 	}
 
 	.testimonials__quote {
