@@ -318,6 +318,23 @@ const year = new Date().getFullYear();
 
 	<div class="modal modal--fixed" data-modal="kontakt" hidden>
 		<div class="modal__backdrop" data-modal-close></div>
+		<div class="modal__pattern" aria-hidden="true">
+			<span class="modal__pattern-tile" style="left: 0em; top: 0em;"></span>
+			<span class="modal__pattern-tile" style="left: 8em; top: 0em;"></span>
+			<span class="modal__pattern-tile" style="left: 16em; top: 0em;"></span>
+			<span class="modal__pattern-tile" style="left: 24em; top: 0em;"></span>
+			<span class="modal__pattern-tile" style="left: 32em; top: 0em;"></span>
+			<span class="modal__pattern-tile" style="left: 4em; top: 8em;"></span>
+			<span class="modal__pattern-tile" style="left: 12em; top: 8em;"></span>
+			<span class="modal__pattern-tile" style="left: 20em; top: 8em;"></span>
+			<span class="modal__pattern-tile" style="left: 28em; top: 8em;"></span>
+			<span class="modal__pattern-tile" style="left: 36em; top: 8em;"></span>
+			<span class="modal__pattern-tile" style="left: 0em; top: 16em;"></span>
+			<span class="modal__pattern-tile" style="left: 8em; top: 16em;"></span>
+			<span class="modal__pattern-tile" style="left: 16em; top: 16em;"></span>
+			<span class="modal__pattern-tile" style="left: 24em; top: 16em;"></span>
+			<span class="modal__pattern-tile" style="left: 32em; top: 16em;"></span>
+		</div>
 		<div class="modal__dialog modal__dialog--kontakt" role="dialog" aria-modal="true" aria-labelledby="kontakt-title">
 			<button type="button" class="modal__close" data-modal-close aria-label="Schließen">
 				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -594,13 +611,23 @@ const year = new Date().getFullYear();
 
 	.modal--fixed .modal__backdrop {
 		background-color: var(--color-neutral-2);
-		background-image:
-			linear-gradient(45deg, var(--color-accent) 25%, transparent 25%),
-			linear-gradient(-45deg, var(--color-accent) 25%, transparent 25%),
-			linear-gradient(45deg, transparent 75%, var(--color-accent) 75%),
-			linear-gradient(-45deg, transparent 75%, var(--color-accent) 75%);
-		background-size: 6em 6em;
-		background-position: 0 0, 0 3em, 3em -3em, -3em 0;
+	}
+
+	.modal__pattern {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 44em;
+		height: 24em;
+		z-index: 0;
+	}
+
+	.modal__pattern-tile {
+		position: absolute;
+		width: 8em;
+		height: 8em;
+		background-color: var(--color-accent);
 	}
 
 	.modal__dialog {
