@@ -50,8 +50,17 @@ const months = ["JANUAR", "FEBRUAR", "MÄRZ", "APRIL", "MAI"];
 				<div class="method__visual">
 					<div class="method__card method__card--single">
 						<p class="method__card-title">Dein Fundament</p>
-						<div class="method__card-image" data-cursor-click>
-							<img src="/assets/images/icon-landingpage-dunkel1.png" alt="" width="208" height="208" data-cursor-img />
+						<div class="method__card-glyph" data-cursor-click>
+							<svg class="method__glyph-icon" data-cursor-img viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+								<rect x="4" y="4" width="92" height="72" rx="8" stroke="var(--color-accent)" stroke-width="4"/>
+								<line x1="4" y1="24" x2="96" y2="24" stroke="var(--color-accent)" stroke-width="4"/>
+								<circle cx="16" cy="14" r="2.5" fill="var(--color-accent)"/>
+								<circle cx="26" cy="14" r="2.5" fill="var(--color-accent)"/>
+								<circle cx="36" cy="14" r="2.5" fill="var(--color-accent)"/>
+								<rect x="16" y="36" width="34" height="8" rx="4" fill="var(--color-accent)"/>
+								<rect x="16" y="52" width="26" height="16" rx="8" fill="var(--color-accent)"/>
+								<path d="M54 40L54 72L61 65.5L66.5 76L72 73.2L66.5 62.5L78 62.5Z" fill="var(--color-accent)"/>
+							</svg>
 							<svg class="method__sparkle" data-sparkle viewBox="0 0 24 24" aria-hidden="true">
 								<path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" fill="white"/>
 							</svg>
@@ -342,23 +351,26 @@ const months = ["JANUAR", "FEBRUAR", "MÄRZ", "APRIL", "MAI"];
 		}
 	}
 
-	.method__card-image {
+	.method__card-glyph {
 		position: relative;
 		width: 100%;
 		height: 18em;
+		background-color: var(--color-primary);
+		border-radius: var(--radius-md);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
-	.method__card-image img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		display: block;
+	.method__glyph-icon {
+		width: 9em;
+		height: auto;
 	}
 
 	.method__sparkle {
 		position: absolute;
-		top: 51%;
-		left: 61%;
+		top: 61%;
+		left: 63%;
 		width: 1.75em;
 		height: 1.75em;
 		transform: scale(0);
