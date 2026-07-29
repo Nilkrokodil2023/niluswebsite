@@ -56,8 +56,8 @@ import Button from "./Button.astro";
 				<img src="/assets/images/image1.png" alt="Agentur-Score: Sehr gut 4,7, 8 Bewertungen, powered by Agenturmarkt.de" width="262" height="165" />
 			</div>
 			<div class="hero__note" data-hero-card>
-				<p class="hero__note-title">Täglich qualifizierte Anfragen.</p>
-				<p class="hero__note-text">Mit einer Website und Werbeanzeigen, die 24/7 für dich arbeiten</p>
+				<p class="hero__note-title">Täglich qualifizierte Anfragen</p>
+				<p class="hero__note-text">Mit einer Website und Werbeanzeigen, die 24/7 für dich arbeiten.</p>
 			</div>
 		</div>
 	</div>
@@ -408,7 +408,19 @@ import Button from "./Button.astro";
 
 		.hero__note {
 			right: 0.5em;
-			width: 50%;
+			bottom: 1%;
+			width: 54%;
+			padding: 0.5em 0.75em;
+		}
+
+		.hero__note-title {
+			font-size: 0.75em;
+		}
+
+		.hero__note-text {
+			margin-top: 0.25em;
+			font-size: 0.625em;
+			line-height: 1.3;
 		}
 	}
 </style>
