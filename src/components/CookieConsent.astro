@@ -13,6 +13,33 @@
 </div>
 
 <script>
+	const META_PIXEL_ID = "1229863115658372";
+
+	function loadMetaPixel() {
+		if ((window as any).fbq) return;
+
+		(function (f: any, b: Document, e: string, v: string) {
+			let n: any, t: HTMLScriptElement, s: Element;
+			if (f.fbq) return;
+			n = f.fbq = function () {
+				n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+			};
+			f._fbq = n;
+			n.push = n;
+			n.loaded = true;
+			n.version = "2.0";
+			n.queue = [];
+			t = b.createElement(e) as HTMLScriptElement;
+			t.async = true;
+			t.src = v;
+			s = b.getElementsByTagName(e)[0];
+			s.parentNode?.insertBefore(t, s);
+		})(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+		(window as any).fbq("init", META_PIXEL_ID);
+		(window as any).fbq("track", "PageView");
+	}
+
 	function initCookieConsent() {
 		const banner = document.querySelector<HTMLElement>("[data-cookie-consent]");
 		if (!banner) return;
@@ -34,10 +61,13 @@
 				/* ignore storage errors */
 			}
 			banner.hidden = true;
+			if (value === "all") loadMetaPixel();
 		}
 
 		if (!hasConsent()) {
 			banner.hidden = false;
+		} else if (hasConsent() === "all") {
+			loadMetaPixel();
 		}
 
 		banner.querySelector("[data-cookie-accept]")?.addEventListener("click", () => setConsent("all"));
