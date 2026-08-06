@@ -427,6 +427,10 @@ const year = new Date().getFullYear();
 			const phone = input?.value.trim();
 			if (!phone) return;
 
+			if ((window as any).fbq) {
+				(window as any).fbq("track", "Lead");
+			}
+
 			const subject = encodeURIComponent("Rückruf-Anfrage");
 			const body = encodeURIComponent(`Bitte ruft mich zurück.\n\nMeine Telefonnummer: ${phone}`);
 			window.location.href = `mailto:hello@nilufarlayer.de?subject=${subject}&body=${body}`;
