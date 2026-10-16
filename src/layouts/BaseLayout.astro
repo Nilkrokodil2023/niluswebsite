@@ -77,6 +77,27 @@ const ogImageUrl = new URL("/icon-512.png", siteUrl).toString();
 			items.forEach((el) => observer.observe(el));
 		}
 
+		// Smooth scrolling for in-page anchor links. Done in JS instead of
+		// `scroll-behavior: smooth` on <html>, because that CSS turns
+		// GSAP ScrollTrigger's refresh into a visible jump to the top on mobile.
+		function initAnchorScroll() {
+			const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+			document.addEventListener("click", (event) => {
+				const link = (event.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
+				if (!link) return;
+
+				const id = link.getAttribute("href")!.slice(1);
+				const target = id && document.getElementById(id);
+				if (!target) return;
+
+				event.preventDefault();
+				target.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+				history.pushState(null, "", `#${id}`);
+			});
+		}
+
 		initScrollReveal();
+		initAnchorScroll();
 	</script>
 </html>
