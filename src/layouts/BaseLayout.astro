@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const siteUrl = "https://www.nilufarlayer.de";
+const siteUrl = "https://www.nilufarlayer.com";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const ogImageUrl = new URL("/icon-512.png", siteUrl).toString();
 ---
